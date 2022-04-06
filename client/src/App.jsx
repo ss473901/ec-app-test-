@@ -17,48 +17,7 @@ function App() {
         <Route path="/product/:id" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/register" element={<Register />} />
-
-        {/* <Route path="/login" element={<Login />}>
-          {user ? <Navigate to="/" /> : <Login />}
-        </Route> */}
-
-        {/* <Route path="login" element={<Login />}>
-          {user ? (
-            <Route path="/" element={<Home />} />
-          ) : (
-            <Route path="/login" element={<Login />} />
-          )}
-        </Route> */}
-
-        {/* <Route>
-          {user ? (
-            <Route path="/" element={<Home />} />
-          ) : (
-            <Route path="/login element={<Login/>}" />
-          )}
-        </Route> */}
-
-        {/* 
-        {user ? (
-          <Route path="/" element={<Home />} />
-        ) : (
-          <Route path="/login" element={<Login />} />
-        )} */}
-
-        {/* {user ? (
-          <Route>
-            <Navigate to="/" />
-          </Route>
-        ) : (
-          <Route path="/login" element={<Login />} />
-        )} */}
-
-        {user ? (
-          <Navigate to="/" />
-        ) : (
-          <Route path="/login" element={<Login />} />
-        )}
-        
+        <Route path="/login" element={user ? <Navigate to="/" /> : <Login />} />
       </Routes>
     </BrowserRouter>
   );
