@@ -5,6 +5,9 @@ const {
   verifyTokenAndAdmin,
 } = require("./verifyToken");
 const router = require("express").Router();
+const express = require("express");
+const cors = require("cors");
+const app = express();
 
 //CREATE
 router.post("/", verifyTokenAndAdmin, async (req, res) => {
@@ -58,7 +61,6 @@ router.get("/", async (req, res) => {
   const qCategory = req.query.category;
   try {
     let products;
-
     if (qNew) {
       products = await Product.find().sort({ createdAt: -1 }).limit(5);
     } else if (qCategory) {
