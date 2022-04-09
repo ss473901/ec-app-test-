@@ -12,7 +12,7 @@ export const ProductList = () => {
   const [sort, setSort] = useState("newest");
 
   const handleFilters = (e) => {
-    const value = e.target.value; 
+    const value = e.target.value;
     setFilters({
       ...filters,
       [e.target.name]: value,
@@ -23,7 +23,7 @@ export const ProductList = () => {
     <Styled.Container>
       <Announcement />
       <Navbar />
-      <Styled.Title>Dresses</Styled.Title>
+      <Styled.Title>{cat}</Styled.Title>
       <Styled.FilterContainer>
         <Styled.Filter>
           <Styled.FilterText>Filter Products</Styled.FilterText>
