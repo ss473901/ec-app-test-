@@ -11,6 +11,13 @@ export const Product = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
+
+  // sizeのエラー
+  console.log(product);
+  console.log("product.color・・・" + product.color);
+  console.log("product.size・・・" + product.size);
+  //　ここまで
 
   useEffect(() => {
     const getProduct = async () => {
@@ -21,6 +28,14 @@ export const Product = () => {
     };
     getProduct();
   }, [id]);
+
+  const handleQuantity = (type) => {
+    if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
+    }
+  };
 
   return (
     <Styled.Container>
@@ -33,32 +48,34 @@ export const Product = () => {
         <Styled.InfoContainer>
           <Styled.Title>{product.title}</Styled.Title>
           <Styled.Desc>{product.desc} </Styled.Desc>
-          <Styled.Price>{product.price}</Styled.Price>
+          <Styled.Price>{product.price}円</Styled.Price>
 
           {/* 追加 */}
           <Styled.FilterContainer>
             <Styled.Filter>
               <Styled.FilterTitle>Color</Styled.FilterTitle>
-              <Styled.FilterColor></Styled.FilterColor>
+              {product.color?.map((c) => (
+                <Styled.FilterColor color={c} key={c} />
+              ))}
             </Styled.Filter>
-
             <Styled.Filter>
               <Styled.FilterTitle>Size</Styled.FilterTitle>
-              <Styled.FilterSize>
-                <Styled.FilterSizeOption>S</Styled.FilterSizeOption>
-                <Styled.FilterSizeOption>M</Styled.FilterSizeOption>
-                <Styled.FilterSizeOption>L</Styled.FilterSizeOption>
-              </Styled.FilterSize>
+              {/* <Styled.FilterSize>
+                {product.size?.map((s) => (
+                  <Styled.FilterSizeOption key={s}>{s}</Styled.FilterSizeOption>
+                ))}
+              </Styled.FilterSize> */}
             </Styled.Filter>
           </Styled.FilterContainer>
-
           {/* ここまで追加 */}
+
           <Styled.AddContainer>
             <Styled.AmountContainer>
-              <RemoveIcon />
-              <Styled.Amount>1</Styled.Amount>
-              <AddIcon />
+              <RemoveIcon onClick={() => handleQuantity("dec")} />
+              <Styled.Amount>{quantity}</Styled.Amount>
+              <AddIcon onClick={() => handleQuantity("inc")} />
             </Styled.AmountContainer>
+
             <Styled.Button>ADD TO CART</Styled.Button>
           </Styled.AddContainer>
         </Styled.InfoContainer>
