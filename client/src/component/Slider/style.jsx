@@ -48,12 +48,13 @@ export const ImgContainer = styled.div`
 `;
 
 export const Image = styled.img`
-  height: 80%;
+  height: 90%;
+  width: 70%;
 `;
 
 export const InfoContainer = styled.div`
   flex: 1;
-  padding: 50px;
+  padding: 30px;
 `;
 
 export const Title = styled.h1`
