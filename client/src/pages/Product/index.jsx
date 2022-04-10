@@ -12,11 +12,14 @@ export const Product = () => {
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
+  const [color, setColor] = useState("");
+  const [size, setSize] = useState("");
 
   // sizeのエラー
   console.log(product);
   console.log("product.color・・・" + product.color);
   console.log("product.size・・・" + product.size);
+  console.log(color);
   //　ここまで
 
   useEffect(() => {
@@ -50,24 +53,28 @@ export const Product = () => {
           <Styled.Desc>{product.desc} </Styled.Desc>
           <Styled.Price>{product.price}円</Styled.Price>
 
-          {/* 追加 */}
           <Styled.FilterContainer>
             <Styled.Filter>
               <Styled.FilterTitle>Color</Styled.FilterTitle>
               {product.color?.map((c) => (
-                <Styled.FilterColor color={c} key={c} />
+                <Styled.FilterColor
+                  color={c}
+                  key={c}
+                  onClick={() => setColor(c)}
+                />
               ))}
             </Styled.Filter>
-            <Styled.Filter>
+            {/* size　エラー有り */}
+            {/* <Styled.Filter>
               <Styled.FilterTitle>Size</Styled.FilterTitle>
-              {/* <Styled.FilterSize>
+              <Styled.FilterSize onChange={(e) => setSize(e.target.value)}>
                 {product.size?.map((s) => (
                   <Styled.FilterSizeOption key={s}>{s}</Styled.FilterSizeOption>
                 ))}
-              </Styled.FilterSize> */}
-            </Styled.Filter>
+              </Styled.FilterSize>
+            </Styled.Filter> */}
+            {/* ここまで追加 */}
           </Styled.FilterContainer>
-          {/* ここまで追加 */}
 
           <Styled.AddContainer>
             <Styled.AmountContainer>

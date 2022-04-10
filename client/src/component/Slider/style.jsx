@@ -49,7 +49,6 @@ export const ImgContainer = styled.div`
 
 export const Image = styled.img`
   height: 90%;
-  width: 70%;
 `;
 
 export const InfoContainer = styled.div`
