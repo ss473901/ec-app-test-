@@ -15,7 +15,6 @@ export const Image = styled.img`
   height: 90vh;
   object-fit: cover;
 `;
-
 export const InfoContainer = styled.div`
   flex: 1;
   padding: 0px 50px;

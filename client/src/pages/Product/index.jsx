@@ -3,15 +3,32 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { Navbar } from "../../component/Navbar";
 import { Announcement } from "../../component/Announcement";
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { publicRequest } from "../../requestMethod";
 
 export const Product = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    const getProduct = async () => {
+      try {
+        const res = await publicRequest.get("/products/find/" + id);
+        setProduct(res.data);
+      } catch {}
+    };
+    getProduct();
+  }, [id]);
+
   return (
     <Styled.Container>
       <Announcement />
       <Navbar />
       <Styled.Wrapper>
         <Styled.ImgContainer>
-          <Styled.Image src="https://i.ibb.co/S6qMxwr/jean.jpg" />
+          <Styled.Image src={product.img} />
         </Styled.ImgContainer>
         <Styled.InfoContainer>
           <Styled.Title>Denim Jumpsuit</Styled.Title>
