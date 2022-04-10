@@ -11,12 +11,13 @@ export const Product = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
+  const [quantity, setQuantity] = useState(1);
 
+  // sizeのエラー
   console.log(product);
-
   console.log("product.color・・・" + product.color);
-
   console.log("product.size・・・" + product.size);
+  //　ここまで
 
   useEffect(() => {
     const getProduct = async () => {
@@ -27,6 +28,14 @@ export const Product = () => {
     };
     getProduct();
   }, [id]);
+
+  const handleQuantity = (type) => {
+    if (type === "dec") {
+      quantity > 1 && setQuantity(quantity - 1);
+    } else {
+      setQuantity(quantity + 1);
+    }
+  };
 
   return (
     <Styled.Container>
@@ -58,14 +67,15 @@ export const Product = () => {
               </Styled.FilterSize> */}
             </Styled.Filter>
           </Styled.FilterContainer>
-
           {/* ここまで追加 */}
+
           <Styled.AddContainer>
             <Styled.AmountContainer>
-              <RemoveIcon />
-              <Styled.Amount>1</Styled.Amount>
-              <AddIcon />
+              <RemoveIcon onClick={() => handleQuantity("dec")} />
+              <Styled.Amount>{quantity}</Styled.Amount>
+              <AddIcon onClick={() => handleQuantity("inc")} />
             </Styled.AmountContainer>
+
             <Styled.Button>ADD TO CART</Styled.Button>
           </Styled.AddContainer>
         </Styled.InfoContainer>
