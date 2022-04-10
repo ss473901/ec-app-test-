@@ -42,17 +42,19 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
   try {
     await Product.findByIdAndDelete(req.params.id);
     res.status(200).json("ユーザーは削除されました");
-  } catch (err) {}
-  res.status(500).json(err);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-//GET PRODUCT
+//GET SINGLE PRODUCT
 router.get("/find/:id", async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
     res.status(200).json(product);
-  } catch (err) {}
-  res.status(500).json(err);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
 //GET ALL PRODUCTS
