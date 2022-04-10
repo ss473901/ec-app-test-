@@ -31,15 +31,28 @@ export const Product = () => {
           <Styled.Image src={product.img} />
         </Styled.ImgContainer>
         <Styled.InfoContainer>
-          <Styled.Title>Denim Jumpsuit</Styled.Title>
-          <Styled.Desc>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            venenatis, dolor in finibus malesuada, lectus ipsum porta nunc, at
-            iaculis arcu nisi sed mauris. Nulla fermentum vestibulum ex, eget
-            tristique tortor pretium ut. Curabitur elit justo, consequat id
-            condimentum ac, volutpat ornare.
-          </Styled.Desc>
-          <Styled.Price> $ 20</Styled.Price>
+          <Styled.Title>{product.title}</Styled.Title>
+          <Styled.Desc>{product.desc} </Styled.Desc>
+          <Styled.Price>{product.price}</Styled.Price>
+
+          {/* 追加 */}
+          <Styled.FilterContainer>
+            <Styled.Filter>
+              <Styled.FilterTitle>Color</Styled.FilterTitle>
+              <Styled.FilterColor></Styled.FilterColor>
+            </Styled.Filter>
+
+            <Styled.Filter>
+              <Styled.FilterTitle>Size</Styled.FilterTitle>
+              <Styled.FilterSize>
+                <Styled.FilterSizeOption>S</Styled.FilterSizeOption>
+                <Styled.FilterSizeOption>M</Styled.FilterSizeOption>
+                <Styled.FilterSizeOption>L</Styled.FilterSizeOption>
+              </Styled.FilterSize>
+            </Styled.Filter>
+          </Styled.FilterContainer>
+
+          {/* ここまで追加 */}
           <Styled.AddContainer>
             <Styled.AmountContainer>
               <RemoveIcon />

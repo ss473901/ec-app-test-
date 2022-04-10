@@ -3,7 +3,7 @@ export const sliderItems = [
     id: 1,
     img: "https://source.unsplash.com/wLj-0qxK-GI",
     title: "SUMMER SALE",
-    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+    desc: "新着商品が30%off",
     bg: "f5fafd",
   },
 
@@ -11,7 +11,7 @@ export const sliderItems = [
     id: 2,
     img: "https://source.unsplash.com/YmfpGk9bWxE",
     title: "AUTUMN COLLECTION",
-    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+    desc: "新着商品が30%off",
     bg: "fcf1ed",
   },
 
@@ -19,7 +19,7 @@ export const sliderItems = [
     id: 3,
     img: "https://source.unsplash.com/7g_w1TOVV7o",
     title: "LOUNGEWEAR LOVE",
-    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
+    desc: "新着商品が30%off",
     bg: "fbf0f4",
   },
 ];
