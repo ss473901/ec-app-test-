@@ -12,6 +12,12 @@ export const Product = () => {
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
 
+  console.log(product);
+
+  console.log("product.color・・・" + product.color);
+
+  console.log("product.size・・・" + product.size);
+
   useEffect(() => {
     const getProduct = async () => {
       try {
@@ -33,22 +39,23 @@ export const Product = () => {
         <Styled.InfoContainer>
           <Styled.Title>{product.title}</Styled.Title>
           <Styled.Desc>{product.desc} </Styled.Desc>
-          <Styled.Price>{product.price}</Styled.Price>
+          <Styled.Price>{product.price}円</Styled.Price>
 
           {/* 追加 */}
           <Styled.FilterContainer>
             <Styled.Filter>
               <Styled.FilterTitle>Color</Styled.FilterTitle>
-              <Styled.FilterColor></Styled.FilterColor>
+              {product.color?.map((c) => (
+                <Styled.FilterColor color={c} key={c} />
+              ))}
             </Styled.Filter>
-
             <Styled.Filter>
               <Styled.FilterTitle>Size</Styled.FilterTitle>
-              <Styled.FilterSize>
-                <Styled.FilterSizeOption>S</Styled.FilterSizeOption>
-                <Styled.FilterSizeOption>M</Styled.FilterSizeOption>
-                <Styled.FilterSizeOption>L</Styled.FilterSizeOption>
-              </Styled.FilterSize>
+              {/* <Styled.FilterSize>
+                {product.size?.map((s) => (
+                  <Styled.FilterSizeOption key={s}>{s}</Styled.FilterSizeOption>
+                ))}
+              </Styled.FilterSize> */}
             </Styled.Filter>
           </Styled.FilterContainer>
 

@@ -18,8 +18,6 @@ export const Image = styled.img`
 export const InfoContainer = styled.div`
   flex: 1;
   padding: 0px 50px;
-
-  border: 1px solid red;
 `;
 
 export const Title = styled.h1`
@@ -73,14 +71,29 @@ export const FilterContainer = styled.div`
   margin: 30px 0px;
   display: flex;
   justify-content: space-between;
-  border: red 1px solid;
 `;
-export const Filter = styled.div``;
+export const Filter = styled.div`
+  display: flex;
+  align-items: center;
+`;
 
-export const FilterTitle = styled.span``;
+export const FilterTitle = styled.span`
+  font-style: 20px;
+  font-weight: 200;
+`;
 
-export const FilterColor = styled.div``;
+export const FilterColor = styled.div`
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: ${(props) => props.color};
+  margin: 0px 5px;
+  cursor: pointer;
+`;
 
-export const FilterSize = styled.select``;
+export const FilterSize = styled.select`
+  margin-left: 10px;
+  padding: 5px;
+`;
 
 export const FilterSizeOption = styled.option``;
