@@ -2,8 +2,12 @@ import * as Styled from "./style";
 import { Search } from "@mui/icons-material";
 import { Badge } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { useSelector } from "react-redux";
 
 export const Navbar = () => {
+  const quantity = useSelector((state) => state.cart.quantity);
+  console.log(quantity);
+
   return (
     <Styled.Container role="header">
       <Styled.Wrapper>

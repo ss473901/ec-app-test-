@@ -40,6 +40,10 @@ export const Product = () => {
     }
   };
 
+  const handleClick = () => {
+    //update cart
+  };
+
   return (
     <Styled.Container>
       <Announcement />
@@ -83,7 +87,7 @@ export const Product = () => {
               <AddIcon onClick={() => handleQuantity("inc")} />
             </Styled.AmountContainer>
 
-            <Styled.Button>ADD TO CART</Styled.Button>
+            <Styled.Button onClick={handleClick}>ADD TO CART</Styled.Button>
           </Styled.AddContainer>
         </Styled.InfoContainer>
       </Styled.Wrapper>
