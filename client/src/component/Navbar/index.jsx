@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 
 export const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
-  console.log(quantity);
 
   return (
     <Styled.Container role="header">
@@ -30,7 +29,7 @@ export const Navbar = () => {
           <Styled.Item>SIGN IN</Styled.Item>
 
           <Styled.Item>
-            <Badge badgeContent={2} color="primary">
+            <Badge badgeContent={quantity} color="primary">
               <ShoppingCartOutlinedIcon />
             </Badge>
           </Styled.Item>
