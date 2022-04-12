@@ -6,6 +6,8 @@ import { Announcement } from "../../component/Announcement";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { publicRequest } from "../../requestMethod";
+import { addProduct } from "../../redux/cartRedux";
+import { useDispatch } from "react-redux";
 
 export const Product = () => {
   const location = useLocation();
@@ -14,13 +16,7 @@ export const Product = () => {
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
-
-  // sizeのエラー
-  console.log(product);
-  console.log("product.color・・・" + product.color);
-  console.log("product.size・・・" + product.size);
-  console.log(color);
-  //　ここまで
+  const dispatch = useDispatch(); //追加
 
   useEffect(() => {
     const getProduct = async () => {
@@ -38,6 +34,13 @@ export const Product = () => {
     } else {
       setQuantity(quantity + 1);
     }
+  };
+
+  const handleClick = () => {
+    //update cart
+    dispatch(
+      addProduct({ product, quantity, price: product.price * quantity })
+    );
   };
 
   return (
@@ -64,16 +67,15 @@ export const Product = () => {
                 />
               ))}
             </Styled.Filter>
-            {/* size　エラー有り */}
-            {/* <Styled.Filter>
+
+            <Styled.Filter>
               <Styled.FilterTitle>Size</Styled.FilterTitle>
               <Styled.FilterSize onChange={(e) => setSize(e.target.value)}>
                 {product.size?.map((s) => (
                   <Styled.FilterSizeOption key={s}>{s}</Styled.FilterSizeOption>
                 ))}
               </Styled.FilterSize>
-            </Styled.Filter> */}
-            {/* ここまで追加 */}
+            </Styled.Filter>
           </Styled.FilterContainer>
 
           <Styled.AddContainer>
@@ -83,7 +85,7 @@ export const Product = () => {
               <AddIcon onClick={() => handleQuantity("inc")} />
             </Styled.AmountContainer>
 
-            <Styled.Button>ADD TO CART</Styled.Button>
+            <Styled.Button onClick={handleClick}>ADD TO CART</Styled.Button>
           </Styled.AddContainer>
         </Styled.InfoContainer>
       </Styled.Wrapper>
