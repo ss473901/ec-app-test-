@@ -5,11 +5,34 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { useSelector } from "react-redux";
 import StripeCheckout from "react-stripe-checkout";
+import { useEffect, useState } from "react";
+import { userRequest } from "../../requestMethod";
+import { useNavigate } from "react-router-dom";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
 export const Cart = () => {
   const cart = useSelector((state) => state.cart);
+  const [stripeToken, setStripeToken] = useState(null);
+  const navigate = useNavigate();
+
+  const onToken = (token) => {
+    setStripeToken(token);
+  };
+
+  useEffect(() => {
+    const makeRequest = async () => {
+      try {
+        const res = await userRequest.post("/checkout/payment", {
+          tokenId: stripeToken.id,
+          amount: 500,
+        });
+        navigate.push("/success");
+      } catch {}
+    };
+    stripeToken && makeRequest();
+  }, [stripeToken, cart.total, navigate]);
+
   return (
     <Styled.Container>
       <Announcement />
@@ -76,15 +99,15 @@ export const Cart = () => {
 
             {/* stripe追加 */}
 
-            <StripeCheckout 
-            name="shop" 
-            image="https://avatars.githubusercontent.com/ss473901" 
-            billingAddress
-            shippingAddress
-            description=""
-            amount={cart.total*100} 
-            token={onToken}
-            stripeKey={}
+            <StripeCheckout
+              name="shop"
+              image="https://avatars.githubusercontent.com/ss473901"
+              billingAddress
+              shippingAddress
+              description={`合計は${cart.total}円です`}
+              amount={cart.total}
+              token={onToken}
+              stripeKey={KEY}
             >
               <Styled.Button>決済する</Styled.Button>
             </StripeCheckout>
