@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
-
   return (
     <Styled.Container role="header">
       <Styled.Wrapper>
@@ -17,13 +16,11 @@ export const Navbar = () => {
             <Search style={{ color: "gray", fontSize: 20 }} />
           </Styled.SearchContainer>
         </Styled.Left>
-
         <Styled.Center>
           <Styled.SLink to={`/`}>
             <Styled.Logo>Clothes.</Styled.Logo>
           </Styled.SLink>
         </Styled.Center>
-
         <Styled.Right>
           <Styled.Item>REGISTER</Styled.Item>
           <Styled.Item>SIGN IN</Styled.Item>

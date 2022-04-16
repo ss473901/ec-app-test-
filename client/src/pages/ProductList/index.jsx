@@ -54,7 +54,6 @@ export const ProductList = () => {
           </Styled.Select>
         </Styled.Filter>
       </Styled.FilterContainer>
-
       <Products cat={cat} filters={filters} sort={sort} />
     </Styled.Container>
   );
