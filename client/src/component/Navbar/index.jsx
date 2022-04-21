@@ -7,6 +7,7 @@ import { persistor } from "../../redux/store";
 
 export const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
+
   const dispatch = useDispatch();
 
   return (
@@ -19,7 +20,6 @@ export const Navbar = () => {
             <Styled.Logo>Clothes.</Styled.Logo>
           </Styled.SLink>
         </Styled.Center>
-
         <Styled.Right>
           <Styled.SLink to={`/register`}>
             <Styled.Item>REGISTER</Styled.Item>

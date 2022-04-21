@@ -16,7 +16,7 @@ export const Product = () => {
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
-  const dispatch = useDispatch(); //追加
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getProduct = async () => {
@@ -52,7 +52,6 @@ export const Product = () => {
           <Styled.Title>{product.title}</Styled.Title>
           <Styled.Desc>{product.desc} </Styled.Desc>
           <Styled.Price>{product.price}円</Styled.Price>
-
           <Styled.FilterContainer>
             <Styled.Filter>
               <Styled.FilterTitle>Color</Styled.FilterTitle>
@@ -64,7 +63,6 @@ export const Product = () => {
                 />
               ))}
             </Styled.Filter>
-
             <Styled.Filter>
               <Styled.FilterTitle>Size</Styled.FilterTitle>
               <Styled.FilterSize onChange={(e) => setSize(e.target.value)}>
@@ -74,14 +72,12 @@ export const Product = () => {
               </Styled.FilterSize>
             </Styled.Filter>
           </Styled.FilterContainer>
-
           <Styled.AddContainer>
             <Styled.AmountContainer>
               <RemoveIcon onClick={() => handleQuantity("dec")} />
               <Styled.Amount>{quantity}</Styled.Amount>
               <AddIcon onClick={() => handleQuantity("inc")} />
             </Styled.AmountContainer>
-
             <Styled.Button onClick={handleClick}>ADD TO CART</Styled.Button>
           </Styled.AddContainer>
         </Styled.InfoContainer>

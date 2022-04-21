@@ -27,7 +27,10 @@ export const Cart = () => {
           tokenId: stripeToken.id,
           amount: 500,
         });
-        navigate.push("/success");
+        navigate.push("/success", {
+          stripeDate: res.data,
+          products: cart,
+        });
       } catch {}
     };
     stripeToken && makeRequest();
@@ -58,7 +61,7 @@ export const Cart = () => {
                       <b>ID:</b>
                       {product._id}
                     </Styled.ProductId>
-                    <Styled.ProductColor />
+                    <Styled.ProductColor color={product.color} />
                     <Styled.ProductSize>
                       <b>サイズ：</b>
                       {product.size}
@@ -86,18 +89,16 @@ export const Cart = () => {
             <Styled.SummaryTitle>商品合計</Styled.SummaryTitle>
             <Styled.SummaryItem>
               <Styled.SummaryItemText>シャツ</Styled.SummaryItemText>
-              <Styled.SummaryItemPrice>1500円</Styled.SummaryItemPrice>
+              <Styled.SummaryItemPrice>{cart.total}</Styled.SummaryItemPrice>
             </Styled.SummaryItem>
             <Styled.SummaryItem>
               <Styled.SummaryItemText>シャツ</Styled.SummaryItemText>
               <Styled.SummaryItemPrice>1500円</Styled.SummaryItemPrice>
             </Styled.SummaryItem>
-            <Styled.SummaryItem>
+            <Styled.SummaryItem type="total">
               <Styled.SummaryItemText>Total</Styled.SummaryItemText>
               <Styled.SummaryItemPrice>{cart.total}</Styled.SummaryItemPrice>
             </Styled.SummaryItem>
-
-            {/* stripe追加 */}
 
             <StripeCheckout
               name="shop"
@@ -111,8 +112,6 @@ export const Cart = () => {
             >
               <Styled.Button>決済する</Styled.Button>
             </StripeCheckout>
-
-            {/* ここまで */}
           </Styled.Summary>
         </Styled.Bottom>
       </Styled.Wrapper>
