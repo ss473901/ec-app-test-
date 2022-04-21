@@ -3,17 +3,11 @@ import { Badge } from "@mui/material";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { logout } from "../../redux/userRedux";
+import { persistor } from "../../redux/store";
 
 export const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
   const dispatch = useDispatch();
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    dispatch(logout);
-    console.log("ログアウト");
-  };
 
   return (
     <Styled.Container role="header">
@@ -35,7 +29,13 @@ export const Navbar = () => {
             <Styled.Item>SIGN IN</Styled.Item>
           </Styled.SLink>
 
-          <Styled.Item onClick={handleClick}>LOGOUT</Styled.Item>
+          <Styled.Item
+            onClick={() => {
+              persistor.purge();
+            }}
+          >
+            LOGOUT
+          </Styled.Item>
 
           <Link to="/cart">
             <Styled.Item>
