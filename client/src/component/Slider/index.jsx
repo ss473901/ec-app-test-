@@ -1,5 +1,4 @@
 import * as Styled from "./style";
-
 import { Link } from "react-router-dom";
 import ArrowRightOutlinedIcon from "@mui/icons-material/ArrowRightOutlined";
 import ArrowLeftOutlinedIcon from "@mui/icons-material/ArrowLeftOutlined";
