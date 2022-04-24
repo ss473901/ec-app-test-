@@ -7,7 +7,6 @@ import { persistor } from "../../redux/store";
 
 export const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
-
   const dispatch = useDispatch();
 
   return (
