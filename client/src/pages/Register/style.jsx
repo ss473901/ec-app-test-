@@ -16,7 +16,7 @@ export const Container = styled.div`
 `;
 
 export const Wrapper = styled.div`
-  width: 40%;
+  width: 20%;
   padding: 20px;
   background-color: white;
 `;
@@ -33,9 +33,9 @@ export const Form = styled.form`
 
 export const Input = styled.input`
   flex: 1;
-  min-width: 40%;
-  margin: 20px 10px 0px 0px;
-  padding: 10px;
+  min-width: 80%;
+  margin: 20px 15px 0px 0px;
+  padding: 15px;
 `;
 
 export const Agreement = styled.span`
@@ -44,10 +44,15 @@ export const Agreement = styled.span`
 `;
 
 export const Button = styled.button`
-  width: 40%;
+  width: 95%;
   border: none;
+  margin-top: 15px;
   padding: 15px 20px;
   background-color: teal;
   color: white;
   cursor: pointer;
+`;
+
+export const Error = styled.span`
+  color: red;
 `;
