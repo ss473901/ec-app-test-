@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { publicRequest } from "../../requestMethod";
 import { addProduct } from "../../redux/cartRedux";
 import { useDispatch } from "react-redux";
+import { Box, Modal, Typography } from "@mui/material";
 
 export const Product = () => {
   const location = useLocation();
@@ -16,6 +17,7 @@ export const Product = () => {
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
+  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,7 +29,6 @@ export const Product = () => {
     };
     getProduct();
   }, [id]);
-
   const handleQuantity = (type) => {
     if (type === "dec") {
       quantity > 1 && setQuantity(quantity - 1);
@@ -35,9 +36,23 @@ export const Product = () => {
       setQuantity(quantity + 1);
     }
   };
-
   const handleClick = () => {
     dispatch(addProduct({ ...product, quantity, color, size }));
+    setOpen(true);
+  };
+  const handleClose = () => setOpen(false);
+
+  // モーダルスタイル
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid teal",
+    boxShadow: 24,
+    p: 4,
   };
 
   return (
@@ -82,6 +97,18 @@ export const Product = () => {
           </Styled.AddContainer>
         </Styled.InfoContainer>
       </Styled.Wrapper>
+      <Modal
+        open={open}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            カートに商品が追加されました
+          </Typography>
+          <button onClick={handleClose}>閉じる</button>
+        </Box>
+      </Modal>
     </Styled.Container>
   );
 };
