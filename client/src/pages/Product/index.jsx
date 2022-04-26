@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { publicRequest } from "../../requestMethod";
 import { addProduct } from "../../redux/cartRedux";
 import { useDispatch } from "react-redux";
-import { Box, Button, Modal, Typography } from "@mui/material";
+import { Box, Modal, Typography } from "@mui/material";
 
 export const Product = () => {
   const location = useLocation();
@@ -17,6 +17,7 @@ export const Product = () => {
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState("");
   const [size, setSize] = useState("");
+  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -28,7 +29,6 @@ export const Product = () => {
     };
     getProduct();
   }, [id]);
-
   const handleQuantity = (type) => {
     if (type === "dec") {
       quantity > 1 && setQuantity(quantity - 1);
@@ -36,13 +36,13 @@ export const Product = () => {
       setQuantity(quantity + 1);
     }
   };
-
   const handleClick = () => {
     dispatch(addProduct({ ...product, quantity, color, size }));
     setOpen(true);
   };
+  const handleClose = () => setOpen(false);
 
-  // モーダル
+  // モーダルスタイル
   const style = {
     position: "absolute",
     top: "50%",
@@ -50,14 +50,10 @@ export const Product = () => {
     transform: "translate(-50%, -50%)",
     width: 400,
     bgcolor: "background.paper",
-    border: "2px solid #000",
+    border: "2px solid teal",
     boxShadow: 24,
     p: 4,
   };
-
-  const [open, setOpen] = useState(false);
-
-  const handleClose = () => setOpen(false);
 
   return (
     <Styled.Container>
