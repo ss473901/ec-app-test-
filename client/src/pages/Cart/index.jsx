@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import { userRequest } from "../../requestMethod";
 import { useNavigate } from "react-router-dom";
 import { deleteProduct } from "../../redux/cartRedux";
+import { persistor } from "../../redux/store";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -39,10 +40,21 @@ export const Cart = () => {
 
   //delete
   const dispatch = useDispatch();
-
   const handleClick = (e) => {
     const id = e.target.id;
-    dispatch(deleteProduct({ id }));
+    const price = e.target.price;
+    const quantity = e.target.quantity;
+    console.log(e.target.price);
+    console.log(e.target.quantity);
+    console.log(e.target.id);
+    console.log(id);
+    dispatch(deleteProduct({ id, price, quantity }));
+  };
+
+  const A = (e) => {
+    console.log(e.target.price);
+    console.log(e.target.quantity);
+    console.log(e.target.id);
   };
 
   return (
@@ -75,8 +87,28 @@ export const Cart = () => {
                       <b>サイズ：</b>
                       {product.size}
                     </Styled.ProductSize>
-                    <button id={product._id} onClick={handleClick}>
+                    <button
+                      id={product._id}
+                      price={product.price}
+                      quantity={product.quantity}
+                      onClick={handleClick}
+                    >
                       削除
+                    </button>
+                    <button
+                      onClick={() => {
+                        persistor.purge();
+                      }}
+                    >
+                      redux初期化
+                    </button>
+                    <button
+                      onClick={A}
+                      price={product.price}
+                      quantity={product.quantity}
+                      id={product._id}
+                    >
+                      reduxへ送る値の確認
                     </button>
                   </Styled.Details>
                 </Styled.ProductDetail>

@@ -15,13 +15,12 @@ const cartSlice = createSlice({
     },
     deleteProduct: (state, action) => {
       const deleteId = action.payload.id;
-      console.log(action.payload.value);
       const index = state.products.findIndex(
         (product) => product._id === deleteId
       );
       state.products.splice(index, 1);
-      // state.quantityも減らす
-      // state.totalも減らす
+      state.quantity -= action.payload.quantity;
+      state.total -= action.payload.price * action.payload.quantity;
     },
   },
 });
