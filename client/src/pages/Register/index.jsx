@@ -9,10 +9,6 @@ export const Register = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const { isFetching, error } = useSelector((state) => state.user);
-
-  console.log(username);
-  console.log(email);
-  console.log(password);
   const handleClick = (e) => {
     e.preventDefault();
     register(dispatch, { username, email, password });
