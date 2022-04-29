@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 import { userRequest } from "../../requestMethod";
 import { useNavigate } from "react-router-dom";
 import { deleteProduct } from "../../redux/cartRedux";
-import { persistor } from "../../redux/store";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -47,7 +46,6 @@ export const Cart = () => {
     dispatch(deleteProduct({ id, price, quantity }));
   };
 
-
   return (
     <Styled.Container>
       <Announcement />
@@ -80,16 +78,12 @@ export const Cart = () => {
                     </Styled.ProductSize>
 
                     <button
-                      id={product._id}
-                      price={product.price}
-                      quantity={product.quantity}
                       onClick={() => {
                         handleClick(product);
                       }}
                     >
                       削除
                     </button>
-
                   </Styled.Details>
                 </Styled.ProductDetail>
                 <Styled.PriceDetail>
