@@ -9,6 +9,7 @@ import { publicRequest } from "../../requestMethod";
 import { addProduct } from "../../redux/cartRedux";
 import { useDispatch } from "react-redux";
 import { Box, Modal, Typography } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 export const Product = () => {
   const location = useLocation();
@@ -93,7 +94,7 @@ export const Product = () => {
               <Styled.Amount>{quantity}</Styled.Amount>
               <AddIcon onClick={() => handleQuantity("inc")} />
             </Styled.AmountContainer>
-            <Styled.Button onClick={handleClick}>ADD TO CART</Styled.Button>
+            <Styled.Button onClick={handleClick}>カートに入れる</Styled.Button>
           </Styled.AddContainer>
         </Styled.InfoContainer>
       </Styled.Wrapper>
@@ -103,10 +104,21 @@ export const Product = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Styled.Icon onClick={handleClose}>
+            <CloseIcon />
+          </Styled.Icon>
+          <Typography
+            id="modal-modal-title"
+            variant="h6"
+            component="h2"
+            margin={"10px"}
+          >
             カートに商品が追加されました
           </Typography>
-          <button onClick={handleClose}>閉じる</button>
+          <Styled.Bottom>
+            <Styled.ModalButton type="filled">カートを見る</Styled.ModalButton>
+            <Styled.ModalButton>お買い物を続ける</Styled.ModalButton>
+          </Styled.Bottom>
         </Box>
       </Modal>
     </Styled.Container>
