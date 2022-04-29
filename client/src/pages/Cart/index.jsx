@@ -40,22 +40,13 @@ export const Cart = () => {
 
   //delete
   const dispatch = useDispatch();
-  const handleClick = (e) => {
-    const id = e.target.id;
-    const price = e.target.price;
-    const quantity = e.target.quantity;
-    console.log(e.target.price);
-    console.log(e.target.quantity);
-    console.log(e.target.id);
-    console.log(id);
+  const handleClick = (product) => {
+    const id = product._id;
+    const price = product.price;
+    const quantity = product.quantity;
     dispatch(deleteProduct({ id, price, quantity }));
   };
 
-  const A = (e) => {
-    console.log(e.target.price);
-    console.log(e.target.quantity);
-    console.log(e.target.id);
-  };
 
   return (
     <Styled.Container>
@@ -87,29 +78,18 @@ export const Cart = () => {
                       <b>サイズ：</b>
                       {product.size}
                     </Styled.ProductSize>
+
                     <button
                       id={product._id}
                       price={product.price}
                       quantity={product.quantity}
-                      onClick={handleClick}
+                      onClick={() => {
+                        handleClick(product);
+                      }}
                     >
                       削除
                     </button>
-                    <button
-                      onClick={() => {
-                        persistor.purge();
-                      }}
-                    >
-                      redux初期化
-                    </button>
-                    <button
-                      onClick={A}
-                      price={product.price}
-                      quantity={product.quantity}
-                      id={product._id}
-                    >
-                      reduxへ送る値の確認
-                    </button>
+
                   </Styled.Details>
                 </Styled.ProductDetail>
                 <Styled.PriceDetail>
@@ -131,17 +111,15 @@ export const Cart = () => {
 
           <Styled.Summary>
             <Styled.SummaryTitle>商品合計</Styled.SummaryTitle>
-            <Styled.SummaryItem>
+            {/*ここから */}
+            {/* <Styled.SummaryItem>
               <Styled.SummaryItemText>シャツ</Styled.SummaryItemText>
-              <Styled.SummaryItemPrice>{cart.total}</Styled.SummaryItemPrice>
-            </Styled.SummaryItem>
-            <Styled.SummaryItem>
-              <Styled.SummaryItemText>シャツ</Styled.SummaryItemText>
-              <Styled.SummaryItemPrice>1500円</Styled.SummaryItemPrice>
-            </Styled.SummaryItem>
+              <Styled.SummaryItemPrice>{cart.total}円</Styled.SummaryItemPrice>
+            </Styled.SummaryItem> */}
+            {/* ここまで */}
             <Styled.SummaryItem type="total">
-              <Styled.SummaryItemText>Total</Styled.SummaryItemText>
-              <Styled.SummaryItemPrice>{cart.total}</Styled.SummaryItemPrice>
+              <Styled.SummaryItemText></Styled.SummaryItemText>
+              <Styled.SummaryItemPrice>{cart.total}円</Styled.SummaryItemPrice>
             </Styled.SummaryItem>
 
             <StripeCheckout
