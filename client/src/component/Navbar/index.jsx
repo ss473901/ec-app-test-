@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { logout } from "../../redux/userRedux";
 import { useState } from "react";
+import { persistor } from "../../redux/store";
 
 export const Navbar = () => {
   const quantity = useSelector((state) => state.cart.quantity);
@@ -42,6 +43,13 @@ export const Navbar = () => {
           </Styled.SLink>
         </Styled.Center>
         <Styled.Right>
+          <Styled.Item
+            onClick={() => {
+              persistor.purge();
+            }}
+          >
+            Redux初期化
+          </Styled.Item>
           <Styled.SLink to={`/register`}>
             <Styled.Item>REGISTER</Styled.Item>
           </Styled.SLink>
