@@ -3,6 +3,7 @@ import { categories } from "../../date";
 import { CategoryItem } from "../CategoryItem";
 
 export const Categories = () => {
+
   return (
     <Styled.Container>
       {categories.map((item) => (
