@@ -117,10 +117,12 @@ export const Cart = () => {
             </Styled.SummaryItem>
 
             <StripeCheckout
-              name="shop"
+              name="カートの商品を購入する"
               image="https://avatars.githubusercontent.com/ss473901"
               billingAddress
               shippingAddress
+              currency="JPY"
+              locale="ja"
               description={`合計は${cart.total}円です`}
               amount={cart.total}
               token={onToken}

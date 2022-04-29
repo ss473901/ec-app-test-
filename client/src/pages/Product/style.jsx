@@ -44,6 +44,7 @@ export const AmountContainer = styled.div`
   display: flex;
   align-items: center;
   font-weight: 700;
+  cursor: pointer;
 `;
 
 export const Amount = styled.span`
@@ -57,6 +58,12 @@ export const Amount = styled.span`
   margin: 0px 5px;
 `;
 
+export const Bottom = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 export const Button = styled.button`
   padding: 15px;
   border: 2px solid teal;
@@ -64,8 +71,25 @@ export const Button = styled.button`
   cursor: pointer;
   font-weight: 500;
 `;
+export const ModalButton = styled.button`
+  padding: 10px;
+  border: 2px solid teal;
+  background-color: white;
+  cursor: pointer;
+  font-weight: 500;
 
-//追加
+  border: ${(props) => props.type === "filled" && "none"};
+  background-color: ${(props) =>
+    props.type === "filled" ? "teal" : "transparent"};
+  color: ${(props) => props.type === "filled" && "white"};
+`;
+
+export const Icon = styled.div`
+  display: flex;
+  justify-content: right;
+  cursor: pointer;
+`;
+
 export const FilterContainer = styled.div`
   width: 50%;
   margin: 30px 0px;
@@ -94,6 +118,7 @@ export const FilterColor = styled.div`
 export const FilterSize = styled.select`
   margin-left: 10px;
   padding: 5px;
+  cursor: pointer;
 `;
 
 export const FilterSizeOption = styled.option``;
