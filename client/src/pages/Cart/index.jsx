@@ -47,7 +47,6 @@ export const Cart = () => {
     dispatch(deleteProduct({ id, price, quantity }));
   };
 
-
   return (
     <Styled.Container>
       <Announcement />
@@ -80,16 +79,12 @@ export const Cart = () => {
                     </Styled.ProductSize>
 
                     <button
-                      id={product._id}
-                      price={product.price}
-                      quantity={product.quantity}
                       onClick={() => {
                         handleClick(product);
                       }}
                     >
                       削除
                     </button>
-
                   </Styled.Details>
                 </Styled.ProductDetail>
                 <Styled.PriceDetail>
