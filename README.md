@@ -11,7 +11,7 @@
 
 ## 使用技術
 
-#### クライアントサイド
+#### ◆クライアントサイド
 - React v17.0.2
   (Hooks: useState, useEffect)
 - react-redux v7.2.6
@@ -27,7 +27,7 @@
 - react-dom v17.0.2
 - react-scripts v5.0.0
 
-#### サーバーサイド
+#### ◆サーバーサイド
 - express v4.17.3
 - mongoose v6.2.8 
 - cors v2.8.5
@@ -35,7 +35,7 @@
 - jsonwebtoken v8.5.1
 - stripe v8.215.0
 
-### データベース
+#### ◆データベース
 - MongoDB v5.0.8
 
 ## 開発方法
