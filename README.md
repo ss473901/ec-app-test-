@@ -6,6 +6,7 @@
 - Password :testuser1234
 
 ## 概要
+衣料品のオンラインストアです。
 
 
 ## 使用技術
@@ -24,7 +25,7 @@
 - Firebase v@@@ (Hosting)
 
 - react-dom v17.0.2
-- - react-scripts v5.0.0
+- react-scripts v5.0.0
 
 #### サーバーサイド
 - express v4.17.3
@@ -35,3 +36,7 @@
 - stripe v8.215.0
 
 ### データベース
+- MongoDB v5.0.8
+
+## 開発方法
+#### クライアントサイド
