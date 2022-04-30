@@ -3,7 +3,7 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import { Navbar } from "../../component/Navbar";
 import { Announcement } from "../../component/Announcement";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { publicRequest } from "../../requestMethod";
 import { addProduct } from "../../redux/cartRedux";
@@ -116,8 +116,14 @@ export const Product = () => {
             カートに商品が追加されました
           </Typography>
           <Styled.Bottom>
-            <Styled.ModalButton type="filled">カートを見る</Styled.ModalButton>
-            <Styled.ModalButton>お買い物を続ける</Styled.ModalButton>
+            <Link to={`/cart`}>
+              <Styled.ModalButton type="filled">
+                カートを見る
+              </Styled.ModalButton>
+            </Link>
+            <Styled.ModalButton onClick={handleClose}>
+              お買い物を続ける
+            </Styled.ModalButton>
           </Styled.Bottom>
         </Box>
       </Modal>

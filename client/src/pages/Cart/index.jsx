@@ -76,7 +76,6 @@ export const Cart = () => {
                       <b>サイズ：</b>
                       {product.size}
                     </Styled.ProductSize>
-
                     <button
                       onClick={() => {
                         handleClick(product);
@@ -115,7 +114,6 @@ export const Cart = () => {
               <Styled.SummaryItemText></Styled.SummaryItemText>
               <Styled.SummaryItemPrice>{cart.total}円</Styled.SummaryItemPrice>
             </Styled.SummaryItem>
-
             <StripeCheckout
               name="カートの商品を購入する"
               image="https://avatars.githubusercontent.com/ss473901"
