@@ -13,7 +13,7 @@ dotenv.config();
 
 //mongoDBと接続
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect(process.env.MONGO_HEROKU_URL||process.env.MONGO_URL)
   .then(() => {
     console.log("データベースと接続中・・・");
   })
