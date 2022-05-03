@@ -13,7 +13,7 @@ dotenv.config();
 
 //mongoDBと接続
 mongoose
-  .connect(process.env.MONGO_HEROKU_URL||process.env.MONGO_URL)
+  .connect(process.env.MONGO_HEROKU_URL || process.env.MONGO_URL)
   .then(() => {
     console.log("データベースと接続中・・・");
   })
@@ -21,7 +21,11 @@ mongoose
     console.log(err);
   });
 
-app.use(cors());
+const corsOptions = {
+  origin: ["https://startling-sorbet-ad40b4.netlify.app/"],
+  optionsSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
