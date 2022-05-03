@@ -1,4 +1,4 @@
 import * as Styled from "./style";
 export const Announcement = () => {
-  return <Styled.Container>Announcement</Styled.Container>;
+  return <Styled.Container>テストページ</Styled.Container>;
 };
