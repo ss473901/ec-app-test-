@@ -22,14 +22,13 @@ mongoose
   });
 
 const corsOptions = {
-  origin: ["https://startling-sorbet-ad40b4.netlify.app/"],
+  origin: ["https://stellular-crostata-f91ee0.netlify.app"],
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/api/users", userRoute);
 app.use("/api/auth", authRoute);
-
 app.use("/api/products", productsRoute);
 app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);

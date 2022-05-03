@@ -12,8 +12,8 @@ export const Products = ({ cat, filters, sort }) => {
       try {
         const res = await axios.get(
           cat
-            ? `https://nameless-wave-93979.herokuapp.com/api/products?category=${cat}`
-            : "https://nameless-wave-93979.herokuapp.com/api/products"
+            ? `https://safe-everglades-33177.herokuapp.com/api/products?category=${cat}`
+            : "https://safe-everglades-33177.herokuapp.com/api/products"
         );
         setProducts(res.data);
       } catch (err) {}
