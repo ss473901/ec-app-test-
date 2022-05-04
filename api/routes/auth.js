@@ -10,7 +10,7 @@ router.post("/register", async (req, res) => {
     email: req.body.email,
     password: CryptoJS.AES.encrypt(
       req.body.password,
-      process.env.PASS_SEC
+      process.env.PASS_SEC_HEROKU || process.env.PASS_SEC
     ).toString(),
   });
 
@@ -49,7 +49,7 @@ router.post("/login", async (req, res) => {
         id: user._id,
         isAdmin: user.isAdmin,
       },
-      process.env.JWT_SEC,
+      process.env.JWT_SEC_HEROKU||process.env.JWT_SEC,
       { expiresIn: "3d" }
     );
 

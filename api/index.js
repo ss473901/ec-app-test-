@@ -22,7 +22,7 @@ mongoose
   });
 
 const corsOptions = {
-  origin: ["https://stellular-crostata-f91ee0.netlify.app"],
+  origin: ["https://startling-sorbet-ad40b4.netlify.app"],
   optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));
@@ -32,6 +32,13 @@ app.use("/api/auth", authRoute);
 app.use("/api/products", productsRoute);
 app.use("/api/carts", cartRoute);
 app.use("/api/orders", orderRoute);
+
+//追加
+app.use(express.static(path.join(__dirname, "/client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/client/build", "index.html"));
+});
 
 app.listen(process.env.PORT || 5003, () => {
   console.log("サーバーが起動しました。");
